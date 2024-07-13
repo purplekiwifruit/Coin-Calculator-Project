@@ -1,4 +1,4 @@
-# true
+# Coin Calculator
 
 How to start the true application
 ---
