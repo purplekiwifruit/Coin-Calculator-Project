@@ -1,5 +1,20 @@
 # Coin-Web Frontend
 
+### Prerequisite
+
+1. Create `.env.development`, this is for running the project for development
+
+```
+echo VITE_API_URL=http://localhost:8080 >> .env.development
+```
+
+2. Create `.env.production`, this is for building the project for production, which is an **essential step for building
+   the docker image**
+
+```
+echo VITE_API_URL={PRODUCTION_URL} >> .env.production
+```
+
 ### Building the Docker Image
 
 To build the Docker image for the Coin Calculator frontend, follow these steps:
