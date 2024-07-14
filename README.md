@@ -1,5 +1,7 @@
 ﻿# Coin Calculator Project
-This repository contains the CoinCalculator project, which consists of a backend server and a frontend application. Below is an overview of the folder structure and a brief explanation of each component.
+This repository contains the Coin Calculator project, which consists of a backend server and a frontend application. You can access the webpage at the following public IP address: http://54.179.214.171/
+
+Below is an overview of the folder structure and a brief explanation of each component.
 
 ### Folder 1: CoinCalculator 
 This folder contains the backend server of the CoinCalculator project. The backend is developed using Dropwizard and Java. It handles the server-side logic, validations, and test cases to ensure the proper functioning of the application.
