@@ -31,34 +31,52 @@ public class CoinChangeServiceTest {
     @Test
     public void testInvalidInput() {
         // Test Case 3: Zero target amount
-        double targetAmount3 = 0.0;
+        Double targetAmount3 = 0.0;
         List<Double> coinDenominators3 = new ArrayList<>(Arrays.asList(1d, 2d, 50d));
-        assertThrows(IllegalArgumentException.class, () -> CoinChangeService.getCoins(coinDenominators3, targetAmount3));
+        assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(coinDenominators3, targetAmount3));
 
         // Test Case 4: Negative target amount
-        double targetAmount4 = -5.0;
-        assertThrows(IllegalArgumentException.class, () -> CoinChangeService.getCoins(coinDenominators3, targetAmount4));
+        Double targetAmount4 = -5.0;
+        assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(coinDenominators3, targetAmount4));
 
         // Test Case 5: Target amount exceeds limit
-        double targetAmount5 = 10001.0;
-        assertThrows(IllegalArgumentException.class, () -> CoinChangeService.getCoins(coinDenominators3, targetAmount5));
+        Double targetAmount5 = 10001.0;
+        assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(coinDenominators3, targetAmount5));
+
+        // Test Case 6: More than two decimal places in target amount
+        Double targetAmount6 = 7.001;
+        assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(coinDenominators3, targetAmount6));
     }
 
     @Test
     public void testEmptyDenominators() {
-        // Test Case 6: Empty denominators list
-        double targetAmount6 = 50.0;
-        List<Double> coinDenominators6 = new ArrayList<>();
-        List<Double> actualResult6 = CoinChangeService.getCoins(coinDenominators6, targetAmount6);
-        assertEquals(new ArrayList<Double>(), actualResult6); // Expect an empty result
+        // Test Case 7: Empty denominators list
+        double targetAmount7 = 50.0;
+        List<Double> coinDenominators7 = new ArrayList<>();
+        assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(coinDenominators7, targetAmount7));
+
     }
 
     @Test
     public void testInvalidDenominations() {
-        // Test Case: Invalid denominations
-        double targetAmount = 5.0;
-        List<Double> invalidDenominators = new ArrayList<>(Arrays.asList(3d, 4d)); // Not in allowed list
-        assertThrows(IllegalArgumentException.class, () -> CoinChangeService.getCoins(invalidDenominators, targetAmount));
+        // Test Case 8: Invalid denominations
+        Double targetAmount8 = 5.0;
+        List<Double> invalidDenominators8 = new ArrayList<>(Arrays.asList(300d, 400d));
+        assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(invalidDenominators8, targetAmount8));
+    }
+
+    @Test
+    public void testNullDenominators() {
+        // Test Case 9: Null denominators list
+        Double targetAmount9 = 5.0;
+        assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(null, targetAmount9));
+    }
+
+    @Test
+    public void testNullTargetAmount() {
+        // Test Case 10: Null target amount
+        List<Double> coinDenominators10 = new ArrayList<>(Arrays.asList(1d, 2d, 5d));
+        assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(coinDenominators10, null));
     }
 
 }
