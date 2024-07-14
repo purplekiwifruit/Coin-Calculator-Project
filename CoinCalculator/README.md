@@ -1,6 +1,6 @@
-# true
+# Coin Calculator
 
-How to start the true application
+How to start the Coin Calculator application
 ---
 
 1. Run `mvn clean install` to build your application

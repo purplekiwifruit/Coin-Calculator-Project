@@ -13,6 +13,8 @@ function App() {
     const [targetAmount, setTargetAmount] = useState('');
     const [selectedDenominators, setSelectedDenominators] = useState<number[]>([]);
     const [result, setResult] = useState<number[]>([]);
+    const [error, setError] = useState('');
+
 
     const handleCheckboxChange = (denominator: number) => {
         setSelectedDenominators(prevState =>
@@ -36,8 +38,24 @@ function App() {
             coinDenominators: selectedDenominators
         };
 
+        // Reset previous errors and results
+        setError('');
+        setResult([]);
+
+        // Validation for zero or invalid target amount
+        if (!coinChange.targetAmount || coinChange.targetAmount <= 0 || coinChange.targetAmount > 10000)  {
+            setError('Please enter a valid target amount greater than 0 and less than 10,000.');
+            return; // Stop the function if validation fails
+        }
+
+        // Validation for empty denominators
+        if (coinChange.coinDenominators.length === 0) {
+            setError('Please select at least one coin denomination.');
+            return; // Stop the function if validation fails
+        }
+
         try {
-            const response = await axios.post<number[]>('http://localhost:8080/coin', coinChange, {
+            const response = await axios.post<number[]>(`${import.meta.env.VITE_API_URL}/coin`, coinChange, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -45,6 +63,7 @@ function App() {
             setResult(response.data);
         } catch (error) {
             console.error('There was an error!', error);
+            setError('Failed to calculate. Please try again.');
         }
     };
 
@@ -94,6 +113,7 @@ function App() {
                     </button>
                 </div>
             </form>
+            {error && <p className="error text-red-800">{error}</p>}
             {result.length > 0 && (
                 <div className="mt-10">
                     <h2 className="text-xl font-semibold mb-4">Result:</h2>
