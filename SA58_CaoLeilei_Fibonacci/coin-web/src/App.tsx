@@ -76,11 +76,8 @@ function App() {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         const errorMessage = error.response.data;
-        console.error("There was an error!", errorMessage);
         setError(`Failed to calculate. Error: ${errorMessage}.`);
       } else {
-        // Handle other errors (network errors, etc.)
-        console.error("There was an error!", error);
         setError("Failed to calculate. Please try again.");
       }
     }
@@ -147,7 +144,7 @@ function App() {
           </button>
         </div>
       </form>
-      {error && <p className="error text-red-800">{error}</p>}
+      {error && <p className="mt-10 error text-red-800">{error}</p>}
       {result.length > 0 && (
         <div className="mt-10">
           <h2 className="text-xl font-semibold mb-4">Result:</h2>
