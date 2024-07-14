@@ -8,6 +8,7 @@ This folder contains the backend server of the CoinCalculator project. The serve
 
 **Technologies used: Dropwizard, Java**
 
+Setup instructions: https://github.com/purplekiwifruit/CoinCalculator/blob/main/SA58_CaoLeilei_Fibonacci/CoinCalculator/README.md
 
 
 ### Folder 2: coin-web
@@ -15,3 +16,4 @@ This folder contains the frontend application of the CoinCalculator project. It 
 
 **Technologies used: React**
 
+Setup instructions: https://github.com/purplekiwifruit/CoinCalculator/blob/main/SA58_CaoLeilei_Fibonacci/coin-web/README.md
