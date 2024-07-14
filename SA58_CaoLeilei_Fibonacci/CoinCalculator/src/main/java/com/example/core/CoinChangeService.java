@@ -3,16 +3,18 @@ package com.example.core;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class CoinChangeService {
 
-    public static List<Double> getCoins(List<Double> coinDenominators, Double targetAmount) {
+    public static List<Double> getCoins(List<Double> coinDenominators, final Double originalTargetAmount) {
+        validateInput(coinDenominators, originalTargetAmount);
 
-        validateInput(coinDenominators, targetAmount);
+        Double targetAmount = originalTargetAmount;
 
         // Greedy algorithm to find minimum number of coins
         List<Double> result = new ArrayList<>();
-        Collections.sort(coinDenominators, Collections.reverseOrder());
+        coinDenominators.sort(Collections.reverseOrder());
         for (Double coin : coinDenominators) {
             while (targetAmount >= coin) {
                 targetAmount -= coin;
@@ -43,10 +45,9 @@ public class CoinChangeService {
             throw new BadRequestException("Please provide at least one denomination");
         }
 
-        List<Double> ALLOWED_DENOMINATIONS = List.of(0.01, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0, 50.0, 100.0, 1000.0);
+        Set<Double> ALLOWED_DENOMINATIONS = Set.of(0.01, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0, 50.0, 100.0, 1000.0);
         if (!ALLOWED_DENOMINATIONS.containsAll(coinDenominators)) {
             throw new BadRequestException("All denominations must be within the allowed list");
         }
     }
-
 }

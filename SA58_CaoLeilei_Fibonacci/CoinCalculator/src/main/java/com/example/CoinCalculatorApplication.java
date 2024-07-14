@@ -18,21 +18,18 @@ public class CoinCalculatorApplication extends Application<CoinCalculatorConfigu
 
     @Override
     public String getName() {
-        return "true";
+        return "CoinCalculator";
     }
 
     @Override
     public void initialize(final Bootstrap<CoinCalculatorConfiguration> bootstrap) {
-        // TODO: application initialization
     }
 
     @Override
     public void run(final CoinCalculatorConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
         CoinResource resource = new CoinResource();
         environment.jersey().register(resource);
-
 
         final FilterRegistration.Dynamic cors =
                 environment.servlets().addFilter("CORS", CrossOriginFilter.class);
@@ -45,5 +42,4 @@ public class CoinCalculatorApplication extends Application<CoinCalculatorConfigu
 
         cors.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM, Boolean.FALSE.toString());
     }
-
 }

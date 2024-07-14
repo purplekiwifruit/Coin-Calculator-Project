@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CoinChangeServiceTest {
     @Test
     public void testValidInput() {
-
         // Test Case 1: Normal scenario
         Double targetAmount1 = 7.03;
         List<Double> coinDenominators1 = new ArrayList<>(Arrays.asList(0.01, 0.5, 1d, 5d, 10d));
@@ -54,7 +53,6 @@ public class CoinChangeServiceTest {
         double targetAmount7 = 50.0;
         List<Double> coinDenominators7 = new ArrayList<>();
         assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(coinDenominators7, targetAmount7));
-
     }
 
     @Test
@@ -78,5 +76,4 @@ public class CoinChangeServiceTest {
         List<Double> coinDenominators10 = new ArrayList<>(Arrays.asList(1d, 2d, 5d));
         assertThrows(BadRequestException.class, () -> CoinChangeService.getCoins(coinDenominators10, null));
     }
-
 }
