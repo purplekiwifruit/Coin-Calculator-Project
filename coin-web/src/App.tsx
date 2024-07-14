@@ -50,7 +50,7 @@ function App() {
 
         // Validation for empty denominators
         if (coinChange.coinDenominators.length === 0) {
-            setError('Please select at least one coin denomination.');
+            setError('Please select at least one coin denominator.');
             return; // Stop the function if validation fails
         }
 
@@ -86,7 +86,7 @@ function App() {
                                value={targetAmount}
                                onChange={(e) => setTargetAmount(e.target.value)}
                                required/>
-                        <p>Please Enter a number between 0 and 10,000.00</p>
+                        <p>Please enter a number between 0 and 10,000.00</p>
                     </div>
 
                     <div className="mb-6">
