@@ -16,5 +16,5 @@ After building the Docker image, you can run the Docker container using the foll
 docker run -d -p 80:80 coincalculator-frontend
 ```
 2. Once the container is running, you can access the Coin Calculator frontend by navigating to 
-`http://localhost` in your web browser.
+http://localhost in your web browser.
 
