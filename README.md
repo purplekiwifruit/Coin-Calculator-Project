@@ -16,4 +16,7 @@ This folder contains the frontend application of the CoinCalculator project. It 
 
 **Technologies used: React**
 
+![image](https://github.com/user-attachments/assets/0eda152e-7732-4731-a4ad-7b21b7a89415)
+
+
 Setup instructions: https://github.com/purplekiwifruit/CoinCalculator/blob/main/SA58_CaoLeilei_Fibonacci/coin-web/README.md
