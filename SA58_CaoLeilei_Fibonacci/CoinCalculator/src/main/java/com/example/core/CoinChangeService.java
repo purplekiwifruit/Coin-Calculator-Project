@@ -55,12 +55,19 @@ public class CoinChangeService {
         if (targetAmount == null) {
             throw new BadRequestException(CoinChangeErrorMessages.ERR_TARGET_AMOUNT_NULL);
         }
+
         if (targetAmount <= MIN_TARGET_EXCLUSIVE || targetAmount > MAX_TARGET_INCLUSIVE) {
             throw new BadRequestException(String.format(CoinChangeErrorMessages.ERR_TARGET_AMOUNT_OUT_OF_RANGE, MIN_TARGET_EXCLUSIVE, MAX_TARGET_INCLUSIVE));
         }
 
-        if (Math.round(targetAmount * 100) != targetAmount * 100) {
-            throw new BadRequestException(CoinChangeErrorMessages.ERR_TARGET_EXCEED_TWO_DECIMAL);
+        String targetAmountStr = String.valueOf(targetAmount);
+        int decimalIndex = targetAmountStr.indexOf('.');
+
+        if (decimalIndex != -1) {
+            String fractionsStr = targetAmountStr.substring(decimalIndex + 1);
+            if (fractionsStr.length() > 2) {
+                throw new BadRequestException(CoinChangeErrorMessages.ERR_TARGET_EXCEED_TWO_DECIMAL);
+            }
         }
 
         if (coinDenominators == null || coinDenominators.isEmpty()) {

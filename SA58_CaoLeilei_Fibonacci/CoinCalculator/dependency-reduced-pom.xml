@@ -125,6 +125,52 @@
       </properties>
     </profile>
   </profiles>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.7.0</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>apiguardian-api</artifactId>
+          <groupId>org.apiguardian</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>junit-platform-engine</artifactId>
+          <groupId>org.junit.platform</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>junit-jupiter-api</artifactId>
+          <groupId>org.junit.jupiter</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-testing</artifactId>
+      <version>2.0.25</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>jackson-jaxrs-json-provider</artifactId>
+          <groupId>com.fasterxml.jackson.jaxrs</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jsr305</artifactId>
+          <groupId>com.google.code.findbugs</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jersey-test-framework-core</artifactId>
+          <groupId>org.glassfish.jersey.test-framework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jersey-test-framework-provider-inmemory</artifactId>
+          <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
   <reporting>
     <plugins>
       <plugin>
