@@ -76,24 +76,20 @@ function App() {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         const errorMessage = error.response.data;
-        console.error("There was an error!", errorMessage);
         setError(`Failed to calculate. Error: ${errorMessage}.`);
       } else {
-        // Handle other errors (network errors, etc.)
-        console.error("There was an error!", error);
         setError("Failed to calculate. Please try again.");
       }
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="max-w-sm mx-auto p-4">
       <h1 className="text-3xl font-serif text-center mb-6 mt-4">
-        {" "}
         Coin Change Calculator
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
-          <label className="block mb-2 text-lg font-semibold font-medium text-gray-900 dark:text-white">
+          <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">
             Target Amount:
           </label>
           <input
@@ -105,11 +101,11 @@ function App() {
             onChange={(e) => setTargetAmount(e.target.value)}
             required
           />
-          <p>Please enter a number between 0 and 10,000.00</p>
+          <p className="mt-2">Please enter a number between 0 and 10,000.00</p>
         </div>
 
         <div className="mb-6">
-          <label className="block mb-2 text-lg font-semibold font-medium text-gray-900 dark:text-white">
+          <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">
             Select Coin Denominators
           </label>
           <div className="flex flex-wrap align-middle">
@@ -148,17 +144,20 @@ function App() {
           </button>
         </div>
       </form>
-      {error && <p className="error text-red-800">{error}</p>}
+      {error && <p className="mt-10 error text-red-800">{error}</p>}
       {result.length > 0 && (
         <div className="mt-10">
           <h2 className="text-xl font-semibold mb-4">Result:</h2>
-          <ul className="flex justify-center space-x-4 mb-4">
+          <div className="flex flex-wrap gap-2">
             {result.map((coin, index) => (
-              <li key={index} className="bg-gray-200 px-4 py-2 rounded-full">
+              <div
+                key={index}
+                className="text-center bg-gray-200 px-4 py-2 rounded-full flex-wrap"
+              >
                 {coin}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>
