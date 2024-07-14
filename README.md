@@ -1,5 +1,5 @@
 ﻿# Coin Calculator Project
-This repository contains the Coin Calculator project, which consists of a backend server and a frontend application. You can access the webpage at the following public IP address: http://54.179.214.171/
+This repository contains the Coin Calculator project, which consists of a backend server and a frontend application. You can access the webpage at the following public IP address: http://13.250.51.5/
 
 Below is an overview of the folder structure and a brief explanation of each component.
 
