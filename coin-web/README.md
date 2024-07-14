@@ -1,30 +1,14 @@
-# React + TypeScript + Vite
+# Coin-Web Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Building the Docker Image
+To build the Docker image for the Coin Calculator frontend, follow these steps:
+1. Open a terminal and navigate to the directory containing your Dockerfile.
+2. Run the following command to build the Docker image: docker build -t coincalculator-frontend .
 
-Currently, two official plugins are available:
+### Running the Docker Container
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+After building the Docker image, you can run the Docker container using the following steps:
 
-## Expanding the ESLint configuration
+1. In the terminal, run the following command to start the container: docker run -d -p 80:80 coincalculator-frontend
+2. Once the container is running, you can access the Coin Calculator frontend by navigating to http://localhost in your web browser.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
