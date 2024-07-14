@@ -101,7 +101,7 @@ function App() {
             onChange={(e) => setTargetAmount(e.target.value)}
             required
           />
-          <p>Please enter a number between 0 and 10,000.00</p>
+          <p className="mt-2">Please enter a number between 0 and 10,000.00</p>
         </div>
 
         <div className="mb-6">
