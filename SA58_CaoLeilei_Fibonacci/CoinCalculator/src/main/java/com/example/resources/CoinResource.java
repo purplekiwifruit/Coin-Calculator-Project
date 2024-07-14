@@ -1,6 +1,5 @@
 package com.example.resources;
 
-
 import com.example.core.BadRequestException;
 import com.example.core.CoinChangeService;
 import jakarta.ws.rs.POST;
@@ -9,7 +8,6 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
-
 
 @Path("/coin")
 @Produces(MediaType.APPLICATION_JSON)
@@ -21,12 +19,12 @@ public class CoinResource {
     }
 
     @POST
-    public List<Double> getCoin(CoinChange coinChange) {
+    public List<Double> getCoin(final CoinChange coinChange) {
         validateInput(coinChange);
         return CoinChangeService.getCoins(coinChange.coinDenominators, coinChange.targetAmount);
     }
 
-    private void validateInput(CoinChange coinChange) {
+    private void validateInput(final CoinChange coinChange) {
         if (coinChange.coinDenominators == null) {
             throw new BadRequestException("Coin denominators cannot be null");
         }
@@ -39,5 +37,4 @@ public class CoinResource {
             throw new BadRequestException("Target amount must have no more than two decimal places");
         }
     }
-
 }
