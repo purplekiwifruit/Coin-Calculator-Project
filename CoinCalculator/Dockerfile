@@ -12,8 +12,8 @@ COPY ./config.yml ./config.yml
 # Build the application
 RUN mvn clean package
 
-# Copy the built jar to the target location
-COPY ./target/CoinCalculator-1.0-SNAPSHOT.jar /app/backend.jar
+# Move the built jar to the target location
+RUN mv ./target/CoinCalculator-1.0-SNAPSHOT.jar /app/backend.jar
 
 # Expose the port the backend listens on
 EXPOSE 8080
